@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let viewController = ViewController.instantiateStoryboard()
+        let viewController = ViewController.viewController()
         viewController.number = 1
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = viewController

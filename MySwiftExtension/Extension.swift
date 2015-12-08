@@ -48,16 +48,11 @@ extension StoryboardInitializable where Self: UIViewController {
         return UIStoryboard(name: self.className, bundle: nil)
     }
     
-    static func instantiateStoryboard() -> Self {
+    static func viewController() -> Self {
         let storyboard = self.storyboard()
         let viewController = storyboard.instantiateInitialViewController() as! Self
         return viewController
     }
-    
-    func instantiateNib<T: UIView, U: AnyObject where T: NSObject>(_: T.Type, owner: U) -> T {
-        return UINib(nibName: T.className, bundle: nil).instantiateWithOwner(owner, options: nil)[0] as! T
-    }
-    
 }
 
 extension UIViewController : StoryboardInitializable {
@@ -73,7 +68,7 @@ extension XibInitializable where Self: UIView {
         return UINib(nibName: className, bundle: nil)
     }
     
-    static func instantiateNib() -> Self {
+    static func view() -> Self {
         let nib = self.nib()
         let view = nib.instantiateWithOwner(self, options: nil)[0] as! Self
         return view
